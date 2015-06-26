@@ -11,16 +11,29 @@
 
 <h:body>
 	<h2>Hello, World!</h2>
-	<h:panelGrid>
-		<h:outputText value="Nome:"/>
-		<h:inputText />
-		
-		<h:outputText value="E-mail:"/>
-		<h:inputText value="" />
-		
-		<h:outputText value="Senha:"/>
-		<h:inputSecret />
-	</h:panelGrid>
+	<h:form>
+		<h:panelGrid columns="8">
+			<h:outputText value="Nome:"/>
+			<h:inputText value="#{consultaBean.consulta.nome}" />
+			
+			<h:outputText value="E-mail:"/>
+			<h:inputText value="#{consultaBean.consulta.email}" />
+			
+			<h:outputText value="Senha:"/>
+			<h:inputSecret value="#{consultaBean.consulta.senha}" />
+			
+			<h:commandButton action="#{consultaBean.cadastrar}" value="Cadastrar"/>
+		</h:panelGrid>
+	</h:form>
+	
+	
+	<h2>Lista de Consultas</h2>
+	
+	<h:dataTable value="#{consultaBean.consultas}" var="consulta">
+	     <h:column>
+	        <h:outputText value="#{consulta.nome}"></h:outputText>
+	    </h:column>
+	</h:dataTable>
 	
 </h:body>
 
