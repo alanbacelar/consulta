@@ -1,18 +1,28 @@
 package br.com.fa7.consulta.modelos;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Consulta {
+public class Usuario {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Basic(optional = false)
+	private String login;
+	
+	@Basic(optional = false)
 	private String nome;
+	
+	@Basic(optional = false)
 	private String email;
+	
+	@Basic(optional = false)
 	private String senha;
 	
 	public Integer getId() {
@@ -39,4 +49,11 @@ public class Consulta {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	
 }

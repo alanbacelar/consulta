@@ -6,32 +6,35 @@
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Consultas</title>
+	<title>Cadastrar Usuário</title>
 </h:head>
 
 <h:body>
 	<h2>Hello, World!</h2>
 	<h:form>
-		<h:panelGrid columns="8">
+		<h:panelGrid columns="9">
 			<h:outputText value="Nome:"/>
-			<h:inputText value="#{consultaBean.consulta.nome}" />
+			<h:inputText value="#{usuarioBean.usuario.nome}" />
 			
 			<h:outputText value="E-mail:"/>
-			<h:inputText value="#{consultaBean.consulta.email}" />
+			<h:inputText value="#{usuarioBean.usuario.email}" />
+			
+			<h:outputText value="Login:"/>
+			<h:inputText value="#{usuarioBean.usuario.login}" />
 			
 			<h:outputText value="Senha:"/>
-			<h:inputSecret value="#{consultaBean.consulta.senha}" />
+			<h:inputSecret value="#{usuarioBean.usuario.senha}" />
 			
-			<h:commandButton action="#{consultaBean.cadastrar}" value="Cadastrar"/>
+			<h:commandButton action="#{usuarioBean.salvar}" value="Cadastrar"/>
 		</h:panelGrid>
 	</h:form>
 	
 	
-	<h2>Lista de Consultas</h2>
+	<h2>Lista de Usuários</h2>
 	
-	<h:dataTable value="#{consultaBean.consultas}" var="consulta">
+	<h:dataTable value="#{usuarioBean.consultas}" var="usuario">
 	     <h:column>
-	        <h:outputText value="#{consulta.nome}"></h:outputText>
+	        <h:outputText value="#{usuario.nome}"></h:outputText>
 	    </h:column>
 	</h:dataTable>
 	
