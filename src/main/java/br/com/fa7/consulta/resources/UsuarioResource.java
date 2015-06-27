@@ -1,7 +1,6 @@
-package br.edu.fa7.consulta.resources;
+package br.com.fa7.consulta.resources;
 
-import java.net.URI;
-
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -18,12 +17,14 @@ import com.google.gson.Gson;
 import br.com.fa7.consulta.daos.UsuarioDao;
 import br.com.fa7.consulta.modelos.Usuario;
 
+@Stateless
 @Path("usuarios")
 public class UsuarioResource extends BaseResource {
+
+	Usuario usuario;
 	
 	@Inject
 	UsuarioDao dao;
-	Usuario usuario;
 	
 	@Override
 	public String getPath() {
@@ -33,7 +34,7 @@ public class UsuarioResource extends BaseResource {
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String busca(@PathParam("id") long id) {
+	public String busca(@PathParam("id") Integer id) {
 		return dao.busca(id).toJSON();
 	}
 	
@@ -57,8 +58,8 @@ public class UsuarioResource extends BaseResource {
 	
 	
 	@DELETE
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response remover(@PathParam("id") long id){
+	@Path("{id}")
+	public Response remover(@PathParam("id") Integer id){
 		usuario = dao.busca(id);
 		dao.remover(usuario);
 
