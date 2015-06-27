@@ -1,4 +1,4 @@
-package br.edu.fa7.consulta.resources;
+package br.com.fa7.consulta.resources;
 
 import java.net.URI;
 

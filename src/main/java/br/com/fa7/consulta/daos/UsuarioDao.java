@@ -14,20 +14,20 @@ public class UsuarioDao extends GenericDao {
 	
 	public Usuario buscaPeloLogin(String login) {
 		TypedQuery<Usuario> query = getEntityManager().createQuery(
-				"select u from Usuario u where u.login=:login ", Usuario.class);
+				"select u from Usuario u where u.login = :login ", Usuario.class);
 
 		return query.setParameter("login", login).getSingleResult();
 	}
 
-	public Usuario busca(long id) {
+	public Usuario busca(Integer id) {
 		return getEntityManager().find(Usuario.class, id);
 	}
 	
-	public void atualizar(long id){
+	public void atualizar(Integer id){
 		remover(busca(id));
 	}
 	
-	public void remover(long id){
+	public void remover(Integer id){
 		remover(busca(id));
 	}
 	
