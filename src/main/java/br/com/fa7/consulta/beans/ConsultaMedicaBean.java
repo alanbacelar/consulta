@@ -24,7 +24,7 @@ public class ConsultaMedicaBean {
 	}
 
 	public void remover(String id) {
-		dao.remover(id);
+		dao.remover(dao.buscarMedico(id));
 		System.out.println("REMOVIDO: " + consulta.getPaciente().getNome());
 	}
 
@@ -32,8 +32,7 @@ public class ConsultaMedicaBean {
 		return consulta;
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<ConsultaMedica> getMedicos() {
-		return (List<ConsultaMedica>) dao.listarTodos(ConsultaMedica.class);
+	public List<ConsultaMedica> getConsultas() {
+		return dao.listarConsultas();
 	}
 }

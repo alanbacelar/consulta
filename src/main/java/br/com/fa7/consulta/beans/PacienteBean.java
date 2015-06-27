@@ -30,8 +30,7 @@ public class PacienteBean {
 		return paciente;
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Paciente> getPacientes() {
-		return (List<Paciente>) dao.listarTodos(Paciente.class);
+		return  dao.listarPacientes();
 	}
 }

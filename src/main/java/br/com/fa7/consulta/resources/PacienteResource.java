@@ -35,7 +35,7 @@ public class PacienteResource extends BaseResource {
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String busca(@PathParam("id") Integer id) {
-		return dao.busca(id).toJSON();
+		return dao.buscarPaciente(id).toJSON();
 	}
 	
 	@POST
@@ -56,11 +56,10 @@ public class PacienteResource extends BaseResource {
 		return responseOK();
 	}
 	
-	
 	@DELETE
 	@Path("{id}")
 	public Response remover(@PathParam("id") Integer id){
-		paciente = dao.busca(id);
+		paciente = dao.buscarPaciente(id);
 		dao.remover(paciente);
 
 		return responseOK();

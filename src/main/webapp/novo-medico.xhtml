@@ -17,25 +17,29 @@
 			<h:panelGrid>
 				<div class="form-group">
 					<h:outputText value="Nome:" />
-					<h:inputText styleClass="form-control"
-						value="#{medicoBean.medico.nome}" required="true" />
+					<h:inputText styleClass="form-control" id="nomeInput"
+						value="#{medicoBean.medico.nome}" required="true"
+						requiredMessage="Informe o nome do médico" />
+					<h:message for="nomeInput" class="text-danger" />	
 				</div>
 
 				<div class="form-group">
 					<h:outputText value="Sobrenome:" />
-					<h:inputText styleClass="form-control"
-						value="#{medicoBean.medico.sobrenome}" required="true" />
+					<h:inputText styleClass="form-control" id="sobrenomeInput"
+						value="#{medicoBean.medico.sobrenome}" required="true" requiredMessage="Informe o sobrenome do médico" />
+					<h:message for="sobrenomeInput" class="text-danger" />	
 				</div>
 
 				<div class="form-group">
 					<h:outputText value="Especialidade: " />
-					<h:selectOneMenu styleClass="form-control"
+					<h:selectOneMenu styleClass="form-control" id="especialidadeSelect"
 						value="#{medicoBean.medico.especialidade}">
 						<f:selectItem itemValue="null" itemLabel="selecione.." />
 						<f:selectItems value="#{especialidadeBean.especialidades}"
 							var="especialidade" itemValue="#{especialidade}"
 							itemLabel="#{especialidade.nomeEspecialidade}" />
 					</h:selectOneMenu>
+					<h:message for="especialidadeSelect" class="text-danger" />
 				</div>
 
 				<div class="form-group">

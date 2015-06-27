@@ -18,8 +18,12 @@ public class MedicoDao extends GenericDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Medico> listarMedicos(){
-		return super.getEntityManager().createQuery("Select m from Medico m Join Fetch m.especialidade").getResultList();
+	public List<Medico> listarMedicos() {
+		return super
+				.getEntityManager()
+				.createQuery(
+						"Select m from Medico m Join Fetch m.especialidade Order By m.nome")
+				.getResultList();
 	}
 	
 }

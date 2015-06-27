@@ -1,13 +1,43 @@
 <ui:composition template="/WEB-INF/templates/main.xhtml"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets" 
->
-   <ui:define name="title">Lista de Consultas</ui:define>
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<ui:define name="title">Lista de Consultas</ui:define>
 
-    <ui:define name="content">
-         
-    </ui:define>
-    
-   
+	<ui:define name="content">
+		<div class="page-header">
+			<h1>Lista de Consultas</h1>
+		</div>
+
+		<h:dataTable value="#{consultaMedicaBean.consultas}" var="consulta"
+			styleClass="table">
+			<h:column>
+				<f:facet name="header">Paciente:</f:facet>
+				<h:outputText
+					value="#{consulta.paciente.nome} #{consulta.paciente.sobrenome}"></h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Médico:</f:facet>
+				<h:outputText
+					value="#{consulta.medico.nome} #{consulta.medico.sobrenome}"></h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Especialidade:</f:facet>
+				<h:outputText
+					value="#{consulta.medico.especialidade.nomeEspecialidade}"></h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Data da Consulta:</f:facet>
+				<h:outputText value="#{consulta.dataConsulta}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</h:column>
+
+		</h:dataTable>
+	</ui:define>
+
 </ui:composition>

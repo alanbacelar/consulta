@@ -1,20 +1,20 @@
-package br.com.fa7.converters;
+package br.com.fa7.consulta.converters;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import br.com.fa7.consulta.modelos.Especialidade;
+import br.com.fa7.consulta.interfaces.Model;
 
-@FacesConverter(forClass=Especialidade.class)
-public class EspecialidadeConverter implements Converter {
+@FacesConverter(forClass=Model.class)
+public class GenericConverter implements Converter {
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component,
 			String value) {
 		if (value != null && !value.isEmpty()) {
-            return (Especialidade) component.getAttributes().get(value);
+            return (Model) component.getAttributes().get(value);
         }
         return null;
 	}
@@ -22,9 +22,9 @@ public class EspecialidadeConverter implements Converter {
 	@Override
 	public String getAsString(FacesContext context, UIComponent component,
 			Object value) {
-		if (value instanceof Especialidade) {
-            Especialidade entity= (Especialidade) value;
-            if (entity != null && entity instanceof Especialidade && entity.getId() != null) {
+		if (value instanceof Model) {
+            Model entity= (Model) value;
+            if (entity != null && entity instanceof Model && entity.getId() != null) {
                 component.getAttributes().put( entity.getId().toString(), entity);
                 return entity.getId().toString();
             }

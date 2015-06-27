@@ -1,0 +1,62 @@
+<ui:composition template="/WEB-INF/templates/main.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+                                                           xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">Nova Consulta</ui:define>
+
+	<ui:define name="content">
+		<div class="page-header">
+			<h1>
+				Nova Consulta <small>Cadastre uma nova Consulta</small>
+			</h1>
+		</div>
+
+		<h:form>
+			<h:panelGrid>
+				<div class="form-group">
+					<h:outputLabel for="pacienteSelect" value="Paciente:" />
+					<h:selectOneMenu class="form-control" id="pacienteSelect"
+						value="#{consultaMedicaBean.consulta.paciente}">
+						<f:selectItem itemValue="null" itemLabel="selecione.." />
+						<f:selectItems value="#{pacienteBean.pacientes}" var="paciente"
+							itemValue="#{paciente}"
+							itemLabel="#{paciente.nome} #{paciente.sobrenome}" />
+					</h:selectOneMenu>
+				</div>
+
+				<div class="form-group">
+					<h:outputLabel for="medicoSelect" value="Medico:" />
+					<h:selectOneMenu class="form-control" id="medicoSelect"
+						value="#{consultaMedicaBean.consulta.medico}">
+						<f:selectItem itemValue="null" itemLabel="selecione.." />
+						<f:selectItems value="#{medicoBean.medicos}" var="medico"
+							itemValue="#{medico}"
+							itemLabel="#{medico.nome} #{medico.sobrenome} - #{medico.especialidade.nomeEspecialidade}" />
+					</h:selectOneMenu>
+				</div>
+
+				<div class="form-group">
+					<h:outputLabel for="dataConsultaInput"
+						value="Data da Consulta:" />
+					<p:inputMask class="form-control" id="dataConsultaInput"
+						value="#{consultaMedicaBean.consulta.dataConsulta}" required="true"
+						requiredMessage="Informe a data da consulta"
+						mask="99/99/9999">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</p:inputMask>
+					<h:message for="dataConsultaInput" class="text-danger" />
+				</div>
+
+				<div class="form-group">
+					<h:commandButton styleClass="btn btn-primary"
+						action="#{consultaMedicaBean.salvar}" value="Cadastrar" />
+				</div>
+
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
