@@ -18,7 +18,7 @@ import br.com.fa7.consulta.interfaces.Model;
 public class ConsultaMedica extends BaseModel implements Model {
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_consulta")
+	@Column(name="id_consulta_medica")
 	private Integer id;
 
 	@ManyToOne

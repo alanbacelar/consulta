@@ -20,7 +20,7 @@ public class UsuarioDao extends GenericDao {
 	}
 
 	public Usuario busca(Integer id) {
-		return getEntityManager().find(Usuario.class, id);
+		return (Usuario) super.busca(Usuario.class, id);
 	}
 	
 	public void atualizar(Integer id){
