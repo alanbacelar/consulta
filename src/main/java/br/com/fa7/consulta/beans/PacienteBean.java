@@ -26,11 +26,6 @@ public class PacienteBean {
 		FacesContext.getCurrentInstance().getExternalContext().redirect("pacientes.xhtml");
 	}
 
-	public void remover(String login) {
-		dao.remover(login);
-		System.out.println("REMOVIDO: " + paciente.getNome());
-	}
-
 	public Paciente getPaciente() {
 		return paciente;
 	}

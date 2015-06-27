@@ -27,11 +27,6 @@ public class UsuarioBean {
 		FacesContext.getCurrentInstance().getExternalContext().redirect("usuarios.xhtml");
 	}
 	
-	public void remover(String login){
-		dao.remover(login);
-		System.out.println("REMOVIDO: " + usuario.getNome());
-	}
-	
 	public Usuario getUsuario() {
 		return usuario;
 	}

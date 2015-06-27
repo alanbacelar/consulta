@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.com.fa7.consulta.interfaces.Model;
+
 @Entity
-public class Usuario {
+public class Usuario extends BaseModel implements Model {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -26,7 +28,7 @@ public class Usuario {
 	private String senha;
 	
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 	public void setId(Integer id) {
 		this.id = id;

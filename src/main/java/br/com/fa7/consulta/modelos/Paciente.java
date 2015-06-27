@@ -8,13 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.fa7.consulta.interfaces.Model;
+
 @Entity
 @Table(name="paciente")
-public class Paciente {
+public class Paciente extends BaseModel implements Model {
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_paciente")
-	private Long id;
+	private Integer id;
 	
 	@Basic(optional = false)
 	private String nome;
@@ -29,11 +31,11 @@ public class Paciente {
 		
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

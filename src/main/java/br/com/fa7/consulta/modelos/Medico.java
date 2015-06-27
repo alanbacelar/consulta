@@ -11,14 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.com.fa7.consulta.interfaces.Model;
+
 @Entity
 @Table(name="medico")
-public class Medico {
+public class Medico extends BaseModel implements Model {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_medico")
-	private Long id;
+	private Integer id;
 	
 	@Column(name="nome_medico")
 	@Basic(optional = false)
@@ -31,11 +33,11 @@ public class Medico {
 	
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

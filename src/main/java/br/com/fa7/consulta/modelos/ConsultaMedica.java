@@ -11,13 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.com.fa7.consulta.interfaces.Model;
+
 @Entity
 @Table(name="consulta_medica")
-public class ConsultaMedica {
+public class ConsultaMedica extends BaseModel implements Model {
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_consulta")
-	private Long id;
+	private Integer id;
 
 	@ManyToOne
 	private Especialidade especialidade;
@@ -29,11 +31,11 @@ public class ConsultaMedica {
 	@Basic(optional = false)
 	private Date dataConsulta;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

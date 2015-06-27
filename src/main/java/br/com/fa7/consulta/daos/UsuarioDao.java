@@ -18,9 +18,17 @@ public class UsuarioDao extends GenericDao {
 
 		return query.setParameter("login", login).getSingleResult();
 	}
+
+	public Usuario busca(long id) {
+		return getEntityManager().find(Usuario.class, id);
+	}
 	
-	public void remover(String login){
-		remover(buscaPeloLogin(login));
+	public void atualizar(long id){
+		remover(busca(id));
+	}
+	
+	public void remover(long id){
+		remover(busca(id));
 	}
 	
 }

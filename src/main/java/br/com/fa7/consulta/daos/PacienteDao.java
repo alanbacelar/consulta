@@ -20,8 +20,4 @@ public class PacienteDao extends GenericDao {
 		return query.setParameter("id", idPaciente).getSingleResult();
 	}
 	
-	public void remover(String idPaciente){
-		remover(buscar(idPaciente));
-	}
-	
 }
