@@ -1,7 +1,6 @@
 package br.com.fa7.consulta.daos;
 
 import javax.ejb.Stateless;
-import javax.persistence.TypedQuery;
 
 import br.com.fa7.consulta.modelos.Paciente;
 
@@ -13,11 +12,8 @@ public class PacienteDao extends GenericDao {
 		System.out.println("SALVANDO DAO: " + paciente.getNome());
 	}
 	
-	public Paciente buscar(String idPaciente) {
-		TypedQuery<Paciente> query = getEntityManager().createQuery(
-				"select p from Paciente p where p.id=:idPaciente ", Paciente.class);
-
-		return query.setParameter("id", idPaciente).getSingleResult();
+	public Paciente busca(Integer id) {
+		return (Paciente) super.busca(Paciente.class, id);
 	}
 	
 }

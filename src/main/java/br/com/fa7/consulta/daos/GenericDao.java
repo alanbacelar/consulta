@@ -28,6 +28,10 @@ public abstract class GenericDao {
 		return em.merge(modelo);
 	}
 	
+	public Object busca(Class<?> c, Integer id) {
+		return em.find(c, id);
+	}
+	
 	public List<?> listarTodos(Class<?> c){
 		return em.createQuery("Select c from "+c.getName()+" c").getResultList();
 	}

@@ -1,6 +1,7 @@
 package br.com.fa7.consulta.modelos;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class Usuario extends BaseModel implements Model {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_usuario")
 	private Integer id;
 	
 	@Basic(optional = false)
