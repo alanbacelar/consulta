@@ -9,7 +9,8 @@ import br.com.fa7.consulta.modelos.Paciente;
 public class PacienteDao extends GenericDao {
 	
 	public void salvar(Paciente paciente) {
-		salvar(paciente);
+		super.salvar(paciente);
+		System.out.println("SALVANDO DAO: " + paciente.getNome());
 	}
 	
 	public Paciente buscar(String idPaciente) {

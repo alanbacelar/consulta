@@ -9,7 +9,7 @@ import br.com.fa7.consulta.modelos.Usuario;
 public class UsuarioDao extends GenericDao {
 	
 	public void salvar(Usuario usuario) {
-		salvar(usuario);
+		super.salvar(usuario);
 	}
 	
 	public Usuario buscaPeloLogin(String login) {

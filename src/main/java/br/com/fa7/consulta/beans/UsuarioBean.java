@@ -1,8 +1,10 @@
 package br.com.fa7.consulta.beans;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -18,9 +20,11 @@ public class UsuarioBean {
 	@Inject
 	private UsuarioDao dao;
 	
-	public void salvar() {
+	public void salvar() throws IOException {
 		dao.salvar(usuario);
 		System.out.println("INSERIDO: " + usuario.getNome());
+		
+		FacesContext.getCurrentInstance().getExternalContext().redirect("usuarios.xhtml");
 	}
 	
 	public void remover(String login){
@@ -33,7 +37,7 @@ public class UsuarioBean {
 	}
 		
 	@SuppressWarnings("unchecked")
-	public List<Usuario> getConsultas() {
+	public List<Usuario> getUsuarios() {
 		return (List<Usuario>) dao.listarTodos(Usuario.class);
 	}
 	

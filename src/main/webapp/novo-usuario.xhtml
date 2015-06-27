@@ -1,0 +1,42 @@
+<ui:composition template="/WEB-INF/templates/main.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+>
+   <ui:define name="title">Novo Usuário</ui:define>
+
+    <ui:define name="content">
+    	<div class="page-header">
+		  <h1>Novo Usuário <small>Cadastre um novo usuário</small></h1>
+		</div>
+		
+	   	<h:form>
+			<h:panelGrid>
+				<div class="form-group">
+					<h:outputText value="Nome:"/>
+					<h:inputText styleClass="form-control" value="#{usuarioBean.usuario.nome}" required="true"/>
+				</div>
+
+				<div class="form-group">
+					<h:outputText value="E-mail:"/>
+					<h:inputText styleClass="form-control" value="#{usuarioBean.usuario.email}"  required="true" />
+				</div>
+				
+				<div class="form-group">
+					<h:outputText value="Login:"/>
+					<h:inputText styleClass="form-control" value="#{usuarioBean.usuario.login}"  required="true" />
+				</div>
+				
+				<div class="form-group">
+					<h:outputText value="Senha:"/>
+					<h:inputSecret styleClass="form-control" value="#{usuarioBean.usuario.senha}"  required="true" />
+				</div>
+				
+				<div class="form-group">
+					<h:commandButton styleClass="btn btn-primary"  action="#{usuarioBean.salvar}" value="Cadastrar"/>
+				</div>
+			</h:panelGrid>
+		</h:form>
+    </ui:define>
+   
+</ui:composition>

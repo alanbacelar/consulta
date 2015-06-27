@@ -16,9 +16,14 @@ public class Paciente {
 	@Column(name="id_paciente")
 	private Long id;
 	
-	@Column(name="nome_paciente")
 	@Basic(optional = false)
 	private String nome;
+	
+	@Basic(optional = false)
+	private String sobrenome;
+	
+	@Basic(optional = true)
+	private String email;
 	
 	public Paciente(){
 		
@@ -39,6 +44,21 @@ public class Paciente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
+
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 }
