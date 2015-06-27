@@ -2,8 +2,8 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core">
-	
+	xmlns:f="http://java.sun.com/jsf/core">
+
 	<ui:define name="title">Novo Médico</ui:define>
 
 	<ui:define name="content">
@@ -29,11 +29,14 @@
 
 				<div class="form-group">
 					<h:outputText value="Especialidade: " />
-					<h:selectOneMenu styleClass="form-control" value="#{medicoBean.medico.especialidade}">
-						<f:selectItem itemLabel="selecione.."/>
-						<f:selectItems value="#{especialidadeBean.especialidades}" />
+					<h:selectOneMenu styleClass="form-control"
+						value="#{medicoBean.medico.especialidade}">
+						<f:selectItem itemValue="null" itemLabel="selecione.." />
+						<f:selectItems value="#{especialidadeBean.especialidades}"
+							var="especialidade" itemValue="#{especialidade}"
+							itemLabel="#{especialidade.nomeEspecialidade}" />
 					</h:selectOneMenu>
-				</div>	
+				</div>
 
 				<div class="form-group">
 					<h:commandButton styleClass="btn btn-primary"

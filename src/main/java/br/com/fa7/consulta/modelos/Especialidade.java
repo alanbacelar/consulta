@@ -1,11 +1,16 @@
 package br.com.fa7.consulta.modelos;
 
+import java.util.List;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.com.fa7.consulta.interfaces.Model;
@@ -14,6 +19,11 @@ import br.com.fa7.consulta.interfaces.Model;
 @Table(name="especialidade")
 public class Especialidade extends BaseModel implements Model {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7968084310834212579L;
+
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_especialidade")
 	private Integer id;
@@ -21,6 +31,9 @@ public class Especialidade extends BaseModel implements Model {
 	@Column(name="nome_especialidade")
 	@Basic(optional = false)
 	private String nomeEspecialidade;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "especialidade", fetch=FetchType.LAZY)
+	private List<Medico> medicos;
 	
 	public Integer getId() {
 		return id;

@@ -64,6 +64,5 @@ public class UsuarioResource extends BaseResource {
 
 		return responseOK();
 	}
-	
 
 }

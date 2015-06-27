@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -37,8 +36,9 @@ public class MedicoBean {
 		return medico;
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<SelectItem> getMedicos() {
-		return (List<SelectItem>) dao.listarTodos(Medico.class);
+	public List<Medico> getMedicos() {
+		List<Medico> medicos = dao.listarMedicos();
+		
+		return  medicos;//(List<Medico>) dao.listarTodos(Medico.class);
 	}
 }

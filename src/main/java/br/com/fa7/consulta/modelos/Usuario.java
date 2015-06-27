@@ -12,6 +12,11 @@ import br.com.fa7.consulta.interfaces.Model;
 @Entity
 public class Usuario extends BaseModel implements Model {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -741175755545108409L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_usuario")

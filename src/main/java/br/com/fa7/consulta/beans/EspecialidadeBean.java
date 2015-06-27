@@ -1,10 +1,8 @@
 package br.com.fa7.consulta.beans;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -34,15 +32,7 @@ public class EspecialidadeBean {
 		return especialidade;
 	}
 
-	public List<SelectItem> getEspecialidades() {
-		List<SelectItem> lista = new ArrayList<SelectItem>();
-		List<Especialidade> listaEspecialidades = dao.listarEspecialidades(); 
-		
-		for(int i = 0; i < listaEspecialidades.size(); i++){
-			lista.add(new SelectItem(listaEspecialidades.get(i), 
-					listaEspecialidades.get(i).getNomeEspecialidade()));
-		}
-		
-		return lista;
+	public List<Especialidade> getEspecialidades() {
+		return dao.listarEspecialidades(); 
 	}
 }

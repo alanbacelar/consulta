@@ -14,6 +14,11 @@ import br.com.fa7.consulta.interfaces.Model;
 @Table(name="paciente")
 public class Paciente extends BaseModel implements Model {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6918653979355869140L;
+
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_paciente")
 	private Integer id;

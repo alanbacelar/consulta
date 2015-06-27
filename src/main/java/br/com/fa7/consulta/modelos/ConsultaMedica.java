@@ -17,6 +17,11 @@ import br.com.fa7.consulta.interfaces.Model;
 @Table(name="consulta_medica")
 public class ConsultaMedica extends BaseModel implements Model {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -576465631485299385L;
+
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_consulta_medica")
 	private Integer id;
