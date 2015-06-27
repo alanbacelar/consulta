@@ -35,7 +35,7 @@ public class UsuarioResource extends BaseResource {
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String busca(@PathParam("id") Integer id) {
-		return dao.busca(id).toJSON();
+		return dao.buscarUsuario(id).toJSON();
 	}
 	
 	@POST
@@ -55,12 +55,11 @@ public class UsuarioResource extends BaseResource {
 
 		return responseOK();
 	}
-	
-	
+		
 	@DELETE
 	@Path("{id}")
 	public Response remover(@PathParam("id") Integer id){
-		usuario = dao.busca(id);
+		usuario = dao.buscarUsuario(id);
 		dao.remover(usuario);
 
 		return responseOK();

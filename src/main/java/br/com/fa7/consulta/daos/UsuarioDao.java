@@ -8,10 +8,6 @@ import br.com.fa7.consulta.modelos.Usuario;
 @Stateless
 public class UsuarioDao extends GenericDao {
 	
-	public void salvar(Usuario usuario) {
-		super.salvar(usuario);
-	}
-	
 	public Usuario buscaPeloLogin(String login) {
 		TypedQuery<Usuario> query = getEntityManager().createQuery(
 				"select u from Usuario u where u.login = :login ", Usuario.class);
@@ -19,16 +15,12 @@ public class UsuarioDao extends GenericDao {
 		return query.setParameter("login", login).getSingleResult();
 	}
 
-	public Usuario busca(Integer id) {
-		return (Usuario) super.busca(Usuario.class, id);
+	public Usuario buscarUsuario(Integer id) {
+		return getEntityManager().find(Usuario.class, id);
 	}
-	
-	public void atualizar(Integer id){
-		remover(busca(id));
-	}
-	
-	public void remover(Integer id){
-		remover(busca(id));
+
+	public void atualizarUsuario(Integer id){
+		super.atualizar(buscarUsuario(id));
 	}
 	
 }

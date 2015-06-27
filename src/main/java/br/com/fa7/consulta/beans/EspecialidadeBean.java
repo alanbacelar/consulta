@@ -1,8 +1,10 @@
 package br.com.fa7.consulta.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -23,8 +25,8 @@ public class EspecialidadeBean {
 		System.out.println("INSERIDO: " + especialidade.getNomeEspecialidade());
 	}
 
-	public void remover(String login) {
-		dao.remover(login);
+	public void removerEspecialidade(String id) {
+		dao.remover(dao.buscarEspecialidade(id));
 		System.out.println("REMOVIDO: " + especialidade.getNomeEspecialidade());
 	}
 
@@ -32,8 +34,15 @@ public class EspecialidadeBean {
 		return especialidade;
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Especialidade> getEspecialidades() {
-		return (List<Especialidade>) dao.listarTodos(Especialidade.class);
+	public List<SelectItem> getEspecialidades() {
+		List<SelectItem> lista = new ArrayList<SelectItem>();
+		List<Especialidade> listaEspecialidades = dao.listarEspecialidades(); 
+		
+		for(int i = 0; i < listaEspecialidades.size(); i++){
+			lista.add(new SelectItem(listaEspecialidades.get(i), 
+					listaEspecialidades.get(i).getNomeEspecialidade()));
+		}
+		
+		return lista;
 	}
 }

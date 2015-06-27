@@ -1,8 +1,11 @@
 package br.com.fa7.consulta.beans;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -18,13 +21,15 @@ public class MedicoBean {
 	@Inject
 	private MedicoDao dao;
 
-	public void salvar() {
+	public void salvar() throws IOException {
 		dao.salvar(medico);
 		System.out.println("INSERIDO: " + medico.getNome());
+		
+		FacesContext.getCurrentInstance().getExternalContext().redirect("medicos.xhtml");
 	}
 
-	public void remover(String id) {
-		dao.remover(id);
+	public void removerMedico(String id) {
+		dao.remover(dao.buscarMedico(id));
 		System.out.println("REMOVIDO: " + medico.getNome());
 	}
 
@@ -33,7 +38,7 @@ public class MedicoBean {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Medico> getMedicos() {
-		return (List<Medico>) dao.listarTodos(Medico.class);
+	public List<SelectItem> getMedicos() {
+		return (List<SelectItem>) dao.listarTodos(Medico.class);
 	}
 }

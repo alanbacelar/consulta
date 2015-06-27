@@ -22,10 +22,20 @@ public class Medico extends BaseModel implements Model {
 	@Column(name="id_medico")
 	private Integer id;
 	
-	@Column(name="nome_medico")
 	@Basic(optional = false)
 	private String nome;
 	
+	@Basic(optional = false)
+	private String sobrenome;
+	
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
 	private Especialidade especialidade;
 	
