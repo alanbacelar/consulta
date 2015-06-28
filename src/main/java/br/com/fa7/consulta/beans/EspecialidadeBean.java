@@ -23,7 +23,6 @@ public class EspecialidadeBean {
 	public void salvar() throws IOException {
 		dao.salvar(especialidade);
 		System.out.println("INSERIDO: " + especialidade.getNome());
-		
 		FacesContext.getCurrentInstance().getExternalContext().redirect("especialidades.xhtml");
 	}
 

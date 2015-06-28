@@ -23,7 +23,6 @@ public class ConsultaMedicaBean {
 	public void salvar() throws IOException {
 		dao.salvar(consulta);
 		System.out.println("INSERIDO: " + consulta.getPaciente().getNome());
-		
 		FacesContext.getCurrentInstance().getExternalContext().redirect("consultas.xhtml");
 	}
 

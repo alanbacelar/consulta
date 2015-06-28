@@ -1,0 +1,308 @@
+<ui:composition template="/WEB-INF/templates/main.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+>
+   <ui:define name="title">API REST - Lista de Resources</ui:define>
+
+    <ui:define name="content">
+    	<div class="page-header">
+		  <h1>Lista de Resources</h1>
+		</div>
+    
+        <h3>Base URL</h3>
+        <p>http://localhost:8080/consulta/api/</p>
+        
+        <h3>Formato JSON</h3>
+        <p>Nossa API Rest retorna e recebe o formato JSON.</p>
+        
+        <h3>Usuários</h3>
+
+        <ul class="list-group">
+		  <li class="list-group-item">
+		  	<h4><span class="badge">GET</span> /usuarios</h4>
+		  	<p>Lista todos os usuários</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">GET</span> /usuarios/{id}</h4>
+		  	<p>Lista um usuário específico</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">PUT</span> /usuarios</h4>
+		  	<p>Atualiza um usuário específico. Exemplo JSON: {
+			    "id": 1,
+			    "login": "demo",
+			    "nome": "Usuário DEMO",
+			    "email": "demo@google.com",
+			    "senha": "pass"
+			  }</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">POST</span> /usuarios</h4>
+		  	<p>Adiciona um usuário específico. Exemplo JSON: {
+			    "login": "demo",
+			    "nome": "Usuário DEMO",
+			    "email": "demo@google.com",
+			    "senha": "pass"
+			  }</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">DELETE</span> /usuarios/{id}</h4>
+		  	<p>Remove um usuário específico</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">JSON</span> Exemplo:</h4>
+		  	<p>
+		  	{
+			    "id": 1,
+			    "login": "demo",
+			    "nome": "Usuário DEMO",
+			    "email": "demo@google.com",
+			    "senha": "pass"
+			  }
+			</p>
+		  </li>
+		</ul>
+        
+        <h3>Pacientes</h3>
+
+        <ul class="list-group">
+		  <li class="list-group-item">
+		  	<h4><span class="badge">GET</span> /pacientes</h4>
+		  	<p>Lista todos os pacientes</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">GET</span> /pacientes/{id}</h4>
+		  	<p>Lista um paciente específico</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">PUT</span> /pacientes</h4>
+		  	<p>Atualiza um paciente específico. Exemplo JSON:
+		  	{
+			    "id": 1,
+			    "nome": "Nome do Paciente",
+			    "sobrenome": "Sobrenome do Paciente",
+			    "email": "paciente@google.com"
+			 }
+			 </p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">POST</span> /pacientes</h4>
+		  	<p>Adiciona um paciente específico. Exemplo JSON: {
+  "nome": "Nome do Paciente",
+  "sobrenome": "Sobrenome do Paciente",
+  "email": "paciente@google.com"
+}</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">DELETE</span> /pacientes/{id}</h4>
+		  	<p>Remove um paciente específico</p>
+		  </li>
+		  
+		   <li class="list-group-item">
+		  	<h4><span class="badge">JSON</span> Exemplo</h4>
+		  	<p>
+		  	{
+			    "id": 1,
+			    "nome": "Nome do Paciente",
+			    "sobrenome": "Sobrenome do Paciente",
+			    "email": "paciente@google.com"
+			  }
+			</p>
+		  </li>
+		</ul>
+		
+		<h3>Especialidades</h3>
+
+        <ul class="list-group">
+		  <li class="list-group-item">
+		  	<h4><span class="badge">GET</span> /especialidades</h4>
+		  	<p>Lista todos os especialidades</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">GET</span> /especialidades/{id}</h4>
+		  	<p>Lista uma especialidade específica</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">PUT</span> /especialidades</h4>
+		  	<p>Atualiza uma especialidade específica. Exemplo JSON:
+		  	{
+			    "id": 1,
+			    "nome": "Nome da especialidade médica"
+		   }</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">POST</span> /especialidades</h4>
+		  	<p>Adiciona uma especialidade específica. Exemplo JSON:
+		  	{ 
+		  	"nome": "Nome da especialidade médica"
+		   }</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">DELETE</span> /especialidades/{id}</h4>
+		  	<p>Remove uma especialidade específica</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">JSON</span> Exemplo</h4>
+		  	<p>
+		  	{
+			    "id": 1,
+			    "nome": "Nome da especialidade médica"
+			  }
+			</p>
+		  </li>
+		</ul>
+		
+		
+		<h3>Médicos</h3>
+
+        <ul class="list-group">
+		  <li class="list-group-item">
+		  	<h4><span class="badge">GET</span> /medicos</h4>
+		  	<p>Lista todos os médicos</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">GET</span> /medicos/{id}</h4>
+		  	<p>Lista um médico específico</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">PUT</span> /medicos</h4>
+		  	<p>Atualiza um médico específico Exemplo JSON: 
+		  	{
+		  		"id": 1,
+			    "nome": "Pedro",
+			    "sobrenome": "Junior",
+			    "especialidade": {
+			      "id": 1
+			    }
+			 }</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">POST</span> /medicos</h4>
+		  	<p>Adiciona um médico específico. Exemplo JSON: 
+		  	{
+			    "nome": "Pedro",
+			    "sobrenome": "Junior",
+			    "especialidade": {
+			      "id": 1
+			    }
+			 }</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">DELETE</span> /medicos/{id}</h4>
+		  	<p>Remove um medico específico</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">JSON</span> Exemplo</h4>
+		  	<p>
+		  	{
+			    "id": 2,
+			    "nome": "Nome do Médico",
+			    "sobrenome": "Sobrenome do Médico",
+			    "especialidade": {
+			      "id": 1,
+			      "nome": "Nome da especialidade médica"
+			    }
+			  }
+			</p>
+		  </li>
+		</ul>
+		
+		<h3>Consultas</h3>
+
+        <ul class="list-group">
+		  <li class="list-group-item">
+		  	<h4><span class="badge">GET</span> /consultas</h4>
+		  	<p>Lista todas as consultas médicas</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">GET</span> /consultas/{id}</h4>
+		  	<p>Lista uma consulta médica específica</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">PUT</span> /consultas</h4>
+		  	<p>Atualiza uma consulta médica específica. Exemplo do JSON: 
+		  	  {
+		  	  		"id": 1,
+				    "medico": {
+				      "id": 1
+				    },
+				    "paciente": {
+				      "id": 1
+				    },
+				    "dataConsulta": "Oct 10, 2015 12:00:00 AM"
+			   }</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">POST</span> /consultas</h4>
+		  	<p>Adiciona uma consulta médica específica. Exemplo do JSON: 
+		  	  {
+				    "medico": {
+				      "id": 1
+				    },
+				    "paciente": {
+				      "id": 1
+				    },
+				    "dataConsulta": "Oct 10, 2015 12:00:00 AM"
+			   }
+			 </p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">DELETE</span> /consultas/{id}</h4>
+		  	<p>Remove uma consulta médica específica</p>
+		  </li>
+		  
+		  <li class="list-group-item">
+		  	<h4><span class="badge">JSON</span> Exemplo</h4>
+		  	<p>
+		  	{
+			    "id": 1,
+			    "medico": {
+			      "id": 1,
+			      "nome": "Nome do Médico ",
+			      "sobrenome": "Sobreome do Médico",
+			      "especialidade": {
+			        "id": 1,
+			        "nome": "Nome da especialidade médica"
+			      }
+			    },
+			    "paciente": {
+			      "id": 1,
+			      "nome": "Nome do Paciente",
+			      "sobrenome": "Sobrenome do Paciente",
+			      "email": "paciente@google.com"
+			    },
+			    "dataConsulta": "Oct 10, 2015 12:00:00 AM"
+			  }
+			</p>
+		  </li>
+		</ul>
+		
+		
+    </ui:define>
+    
+</ui:composition>
