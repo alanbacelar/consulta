@@ -38,12 +38,12 @@ public class LoginBean {
 		} catch (UsuarioInvalidoException e) {
 			// TODO Auto-generated catch block
 			this.usuario = new Usuario();
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), "loginForm"));
+			FacesContext.getCurrentInstance().addMessage("loginForm",
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), "Usuário e/ou senha inválidos"));
 		}
 	}
 
-	public void efetuaLogout() {
+	public void logout() throws IOException  {
 		this.autenticar.deslogar();
 	}
 }

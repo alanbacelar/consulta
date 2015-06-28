@@ -69,7 +69,6 @@
                   <li><a href="./usuarios.xhtml">Ver usuários</a></li>
                 </ul>
               </li>
-              <li class="active"><a href="./logout.xhtml">Sair</a></li>
            </ul>
            
            <ul class="nav navbar-nav navbar-right">
@@ -81,7 +80,10 @@
 	
 	<div class="container">
     	<ui:insert name="content" />
+    	<p class="text-center" style="margin-top: 100px;"><h:form><h:commandLink action="#{loginBean.logout}" value="Sair do sistema" /></h:form></p>
     </div>
+    
+    
 </h:body>
 
 <!-- Latest compiled and minified JavaScript -->
