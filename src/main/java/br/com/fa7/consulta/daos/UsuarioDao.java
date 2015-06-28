@@ -27,7 +27,6 @@ public class UsuarioDao extends GenericDao {
 			System.out.println(e.getMessage());
 			return new Usuario();
 		}
-
 	}
 
 	@SuppressWarnings("unchecked")

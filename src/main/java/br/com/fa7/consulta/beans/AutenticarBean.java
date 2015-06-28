@@ -25,8 +25,9 @@ public class AutenticarBean implements Serializable {
 		FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
 	}
 
-	public void deslogar() {
+	public void deslogar() throws IOException {
 		this.usuario = null;
+		FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
 	}
 	
 	public Usuario getUsuario() {
