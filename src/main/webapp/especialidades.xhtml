@@ -1,0 +1,27 @@
+<ui:composition template="/WEB-INF/templates/main.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+>
+   <ui:define name="title">Lista de Especialidades</ui:define>
+
+    <ui:define name="content">
+    	<div class="page-header">
+		  <h1>Lista de Especialidades</h1>
+		</div>
+    
+         <h:dataTable value="#{especialidadeBean.especialidades}" var="especialidade" styleClass="table">
+         	<h:column>
+		     	<f:facet name="header">Código</f:facet>
+		        <h:outputText value="#{especialidade.id}"></h:outputText>
+		    </h:column>
+		    
+		     <h:column>
+		     	<f:facet name="header">Nome</f:facet>
+		        <h:outputText value="#{especialidade.nome}"></h:outputText>
+		    </h:column>
+		</h:dataTable>
+    </ui:define>
+    
+</ui:composition>

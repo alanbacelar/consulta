@@ -14,22 +14,26 @@
 			<h:panelGrid>
 				<div class="form-group">
 					<h:outputText value="Nome:"/>
-					<h:inputText styleClass="form-control" value="#{usuarioBean.usuario.nome}" required="true"/>
+					<h:inputText id="nomeInput" styleClass="form-control" value="#{usuarioBean.usuario.nome}" required="true" requiredMessage="Informe o nome do usuário" />
+					<h:message for="nomeInput" class="text-danger" />
 				</div>
 
 				<div class="form-group">
 					<h:outputText value="E-mail:"/>
-					<h:inputText styleClass="form-control" value="#{usuarioBean.usuario.email}"  required="true" />
+					<h:inputText id="nomeEmail" styleClass="form-control" value="#{usuarioBean.usuario.email}"  required="true" requiredMessage="Informe o email do usuário" />
+					<h:message for="nomeEmail" class="text-danger" />
 				</div>
 				
 				<div class="form-group">
 					<h:outputText value="Login:"/>
-					<h:inputText styleClass="form-control" value="#{usuarioBean.usuario.login}"  required="true" />
+					<h:inputText id="nomeLogin" styleClass="form-control" value="#{usuarioBean.usuario.login}"  required="true" requiredMessage="Informe o login do usuário" />
+					<h:message for="nomeLogin" class="text-danger" />
 				</div>
 				
 				<div class="form-group">
 					<h:outputText value="Senha:"/>
-					<h:inputSecret styleClass="form-control" value="#{usuarioBean.usuario.senha}"  required="true" />
+					<h:inputSecret id="nomeSenha" styleClass="form-control" value="#{usuarioBean.usuario.senha}"  required="true" requiredMessage="Informe a senha do usuário" />
+					<h:message for="nomeSenha" class="text-danger" />
 				</div>
 				
 				<div class="form-group">
