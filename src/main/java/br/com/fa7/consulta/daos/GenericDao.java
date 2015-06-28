@@ -28,12 +28,22 @@ public abstract class GenericDao {
 		return em.merge(modelo);
 	}
 	
-	public Object busca(Class<?> c, Integer id) {
-		return em.find(c, id);
+	public Object busca(Class<?> c, Integer id) throws InstantiationException, IllegalAccessException {
+		Object obj = em.find(c, id);
+		
+		if (obj != null) {
+			return obj;
+		} else {
+			return c.newInstance();
+		}
+	}
+	
+	public List<?> listarTodos(Class<?> c, String orderBy){
+		return em.createQuery("Select c from "+c.getName()+" c  Order By c." + orderBy).getResultList();
 	}
 	
 	public List<?> listarTodos(Class<?> c){
-		return em.createQuery("Select c from "+c.getName()+" c").getResultList();
+		return listarTodos(c, "nome");
 	}
 	
 	public EntityManager getEntityManager(){
