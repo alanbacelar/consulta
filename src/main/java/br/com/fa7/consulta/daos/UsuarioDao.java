@@ -1,5 +1,7 @@
 package br.com.fa7.consulta.daos;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 
@@ -16,11 +18,18 @@ public class UsuarioDao extends GenericDao {
 	}
 
 	public Usuario buscarUsuario(Integer id) {
-		return getEntityManager().find(Usuario.class, id);
-	}
-
-	public void atualizarUsuario(Integer id){
-		super.atualizar(buscarUsuario(id));
+		try {
+			return (Usuario) super.busca(Usuario.class, id);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new Usuario();
+		}
+		
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Usuario> listarTodos(){
+		return (List<Usuario>) super.listarTodos(Usuario.class);
+	}
+
 }

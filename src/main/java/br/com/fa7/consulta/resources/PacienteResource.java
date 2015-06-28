@@ -22,13 +22,19 @@ import br.com.fa7.consulta.modelos.Paciente;
 public class PacienteResource extends BaseResource {
 
 	Paciente paciente;
-	
+
 	@Inject
 	PacienteDao dao;
-	
+
 	@Override
 	public String getPath() {
 		return "/pacientes/";
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public String lista() {
+		return new Gson().toJson(dao.listarPacientes());
 	}
 
 	@GET
@@ -37,7 +43,7 @@ public class PacienteResource extends BaseResource {
 	public String busca(@PathParam("id") Integer id) {
 		return dao.buscarPaciente(id).toJSON();
 	}
-	
+
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response adiciona(String conteudo){
@@ -55,7 +61,7 @@ public class PacienteResource extends BaseResource {
 
 		return responseOK();
 	}
-	
+
 	@DELETE
 	@Path("{id}")
 	public Response remover(@PathParam("id") Integer id){
@@ -64,6 +70,5 @@ public class PacienteResource extends BaseResource {
 
 		return responseOK();
 	}
-	
 
 }

@@ -14,59 +14,59 @@ import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 
-import br.com.fa7.consulta.daos.UsuarioDao;
-import br.com.fa7.consulta.modelos.Usuario;
+import br.com.fa7.consulta.daos.EspecialidadeDao;
+import br.com.fa7.consulta.modelos.Especialidade;
 
 @Stateless
-@Path("usuarios")
-public class UsuarioResource extends BaseResource {
+@Path("especialidades")
+public class EspecialidadesResource extends BaseResource {
 
-	Usuario usuario;
-	
+	Especialidade especialidade;
+
 	@Inject
-	UsuarioDao dao;
-	
+	EspecialidadeDao dao;
+
 	@Override
 	public String getPath() {
-		return "/usuarios/";
+		return "/especialidades/";
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public String lista() {
-		return new Gson().toJson(dao.listarTodos());
+		return new Gson().toJson(dao.listarEspecialidades());
 	}
 
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String busca(@PathParam("id") Integer id) {
-		return dao.buscarUsuario(id).toJSON();
+		return dao.buscarEspecialidade(id).toJSON();
 	}
-	
+
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response adiciona(String conteudo){
-		usuario = new Gson().fromJson(conteudo, Usuario.class);
-		dao.salvar(usuario);
+		especialidade = new Gson().fromJson(conteudo, Especialidade.class);
+		dao.salvar(especialidade);
 
-		return responseCreated(usuario);
+		return responseCreated(especialidade);
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response atualiza(String conteudo){
-		usuario = new Gson().fromJson(conteudo, Usuario.class);
-		dao.atualizar(usuario);
+		especialidade = new Gson().fromJson(conteudo, Especialidade.class);
+		dao.atualizar(especialidade);
 
 		return responseOK();
 	}
-		
+
 	@DELETE
 	@Path("{id}")
 	public Response remover(@PathParam("id") Integer id){
-		usuario = dao.buscarUsuario(id);
-		dao.remover(usuario);
+		especialidade = dao.buscarEspecialidade(id);
+		dao.remover(especialidade);
 
 		return responseOK();
 	}

@@ -14,59 +14,59 @@ import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 
-import br.com.fa7.consulta.daos.UsuarioDao;
-import br.com.fa7.consulta.modelos.Usuario;
+import br.com.fa7.consulta.daos.ConsultaMedicaDao;
+import br.com.fa7.consulta.modelos.ConsultaMedica;
 
 @Stateless
-@Path("usuarios")
-public class UsuarioResource extends BaseResource {
+@Path("consultas")
+public class ConsultaMedicaResource extends BaseResource {
 
-	Usuario usuario;
-	
+	ConsultaMedica consulta;
+
 	@Inject
-	UsuarioDao dao;
-	
+	ConsultaMedicaDao dao;
+
 	@Override
 	public String getPath() {
-		return "/usuarios/";
+		return "/consultas/";
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public String lista() {
-		return new Gson().toJson(dao.listarTodos());
+		return new Gson().toJson(dao.listarConsultas());
 	}
 
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String busca(@PathParam("id") Integer id) {
-		return dao.buscarUsuario(id).toJSON();
+		return dao.buscarConsulta(id).toJSON();
 	}
-	
+
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response adiciona(String conteudo){
-		usuario = new Gson().fromJson(conteudo, Usuario.class);
-		dao.salvar(usuario);
+		consulta = new Gson().fromJson(conteudo, ConsultaMedica.class);
+		dao.salvar(consulta);
 
-		return responseCreated(usuario);
+		return responseCreated(consulta);
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response atualiza(String conteudo){
-		usuario = new Gson().fromJson(conteudo, Usuario.class);
-		dao.atualizar(usuario);
+		consulta = new Gson().fromJson(conteudo, ConsultaMedica.class);
+		dao.atualizar(consulta);
 
 		return responseOK();
 	}
-		
+
 	@DELETE
 	@Path("{id}")
 	public Response remover(@PathParam("id") Integer id){
-		usuario = dao.buscarUsuario(id);
-		dao.remover(usuario);
+		consulta = dao.buscarConsulta(id);
+		dao.remover(consulta);
 
 		return responseOK();
 	}

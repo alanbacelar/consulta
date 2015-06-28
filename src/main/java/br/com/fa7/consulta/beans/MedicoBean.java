@@ -27,7 +27,7 @@ public class MedicoBean {
 		FacesContext.getCurrentInstance().getExternalContext().redirect("medicos.xhtml");
 	}
 
-	public void removerMedico(String id) {
+	public void removerMedico(Integer id) {
 		dao.remover(dao.buscarMedico(id));
 		System.out.println("REMOVIDO: " + medico.getNome());
 	}
