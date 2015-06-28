@@ -27,12 +27,10 @@ public class LoginPhaseListener implements PhaseListener {
 
 		ELContext elContext = context.getELContext();
 		ELResolver elResolver = context.getApplication().getELResolver();
-		AutenticarBean autenticar = (AutenticarBean) elResolver.getValue(
-				elContext, null, "autenticarBean");
+		AutenticarBean autenticar = (AutenticarBean) elResolver.getValue(elContext, null, "autenticarBean");
+		
 		if (!autenticar.isLogado()) {
-
-			NavigationHandler handler = context.getApplication()
-					.getNavigationHandler();
+			NavigationHandler handler = context.getApplication().getNavigationHandler();
 			handler.handleNavigation(context, null, "login?faces-redirect=true");
 
 			context.renderResponse();

@@ -18,6 +18,15 @@ public class Usuario extends BaseModel implements Model {
 	 * 
 	 */
 	private static final long serialVersionUID = -741175755545108409L;
+	
+	public Usuario() {}
+	
+	public Usuario(String nome, String email, String login, String senha) {
+		this.nome = nome;
+		this.email = email;
+		this.login = login;
+		this.senha = senha;
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

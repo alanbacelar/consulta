@@ -2,6 +2,8 @@ package br.com.fa7.consulta.daos;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
@@ -10,14 +12,21 @@ import br.com.fa7.consulta.exception.UsuarioInvalidoException;
 import br.com.fa7.consulta.modelos.Usuario;
 
 @Stateless
+@Startup
 public class UsuarioDao extends GenericDao {
 
 	public Usuario buscaPeloLogin(String login) {
-		TypedQuery<Usuario> query = getEntityManager().createQuery(
-				"select u from Usuario u where u.login = :login ",
-				Usuario.class);
-
-		return query.setParameter("login", login).getSingleResult();
+		try {
+			TypedQuery<Usuario> query = getEntityManager().createQuery("select u from Usuario u where u.login = :login ", Usuario.class);
+			return query.setParameter("login", login).getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public boolean hasUsuarioAdmin() {
+		Usuario admin = buscaPeloLogin("admin");
+		return (admin != null);
 	}
 
 	public Usuario buscarUsuario(Integer id) {
@@ -49,6 +58,14 @@ public class UsuarioDao extends GenericDao {
 		} catch (NoResultException e) {
 			throw new UsuarioInvalidoException();	
 		}
+	}
+	
+	@PostConstruct
+	void criaUsuarioAdmin() {
+		if (!hasUsuarioAdmin()) {
+			getEntityManager().persist(new Usuario("Admin", "admin@admin.com", "admin", "pass"));
+			System.out.println("Usuário admin criado com a senha: pass.");
+		}		
 	}
 
 }
