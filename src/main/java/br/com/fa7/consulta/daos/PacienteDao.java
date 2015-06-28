@@ -9,18 +9,18 @@ import br.com.fa7.consulta.modelos.Paciente;
 @Stateless
 public class PacienteDao extends GenericDao {
 	
-	public void salvar(Paciente paciente) {
-		super.salvar(paciente);
-		System.out.println("SALVANDO DAO: " + paciente.getNome());
-	}
-	
 	public Paciente buscarPaciente(Integer id) {
-		return (Paciente) super.busca(Paciente.class, id);
+		try {
+			return (Paciente) super.busca(Paciente.class, id);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new Paciente();
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Paciente> listarPacientes(){
-		return super.getEntityManager().createQuery("Select p from Paciente p Order By p.nome").getResultList();
+		return (List<Paciente>) super.listarTodos(Paciente.class);
 	}
 	
 }

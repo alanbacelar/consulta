@@ -26,8 +26,8 @@ public class ConsultaMedicaBean {
 		FacesContext.getCurrentInstance().getExternalContext().redirect("consultas.xhtml");
 	}
 
-	public void remover(String id) {
-		dao.remover(dao.buscarMedico(id));
+	public void remover(Integer id) {
+		dao.remover(dao.buscarConsulta(id));
 		System.out.println("REMOVIDO: " + consulta.getPaciente().getNome());
 	}
 

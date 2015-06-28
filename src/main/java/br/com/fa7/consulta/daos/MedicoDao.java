@@ -3,27 +3,25 @@ package br.com.fa7.consulta.daos;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.persistence.TypedQuery;
 
 import br.com.fa7.consulta.modelos.Medico;
 
 @Stateless
 public class MedicoDao extends GenericDao {
 	
-	public Medico buscarMedico(String idMedico) {
-		TypedQuery<Medico> query = getEntityManager().createQuery(
-				"select m from Medico m where m.id=:idMedico ", Medico.class);
-
-		return query.setParameter("id", idMedico).getSingleResult();
+	public Medico buscarMedico(Integer id) {
+		try {
+			return (Medico) super.busca(Medico.class, id);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new Medico();
+		}
+		
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Medico> listarMedicos() {
-		return super
-				.getEntityManager()
-				.createQuery(
-						"Select m from Medico m Join Fetch m.especialidade Order By m.nome")
-				.getResultList();
+		return (List<Medico>) super.listarTodos(Medico.class);
 	}
 	
 }

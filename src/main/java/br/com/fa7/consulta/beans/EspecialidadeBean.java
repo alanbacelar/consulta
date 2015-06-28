@@ -22,13 +22,13 @@ public class EspecialidadeBean {
 	
 	public void salvar() throws IOException {
 		dao.salvar(especialidade);
-		System.out.println("INSERIDO: " + especialidade.getNomeEspecialidade());
+		System.out.println("INSERIDO: " + especialidade.getNome());
 		FacesContext.getCurrentInstance().getExternalContext().redirect("especialidades.xhtml");
 	}
 
-	public void removerEspecialidade(String id) {
+	public void removerEspecialidade(Integer id) {
 		dao.remover(dao.buscarEspecialidade(id));
-		System.out.println("REMOVIDO: " + especialidade.getNomeEspecialidade());
+		System.out.println("REMOVIDO: " + especialidade.getNome());
 	}
 
 	public Especialidade getEspecialidade() {

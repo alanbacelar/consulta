@@ -28,9 +28,9 @@ public class Especialidade extends BaseModel implements Model {
 	@Column(name="id_especialidade")
 	private Integer id;
 	
-	@Column(name="nome_especialidade")
+	@Column(name="nome")
 	@Basic(optional = false)
-	private String nomeEspecialidade;
+	private String nome;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "especialidade", fetch=FetchType.LAZY)
 	private List<Medico> medicos;
@@ -43,12 +43,12 @@ public class Especialidade extends BaseModel implements Model {
 		this.id = id;
 	}
 
-	public String getNomeEspecialidade() {
-		return nomeEspecialidade;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeEspecialidade(String nomeEspecialidade) {
-		this.nomeEspecialidade = nomeEspecialidade;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Especialidade() {

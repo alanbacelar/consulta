@@ -29,11 +29,11 @@ public class ConsultaMedica extends BaseModel implements Model {
 	@Column(name = "id_consulta_medica")
 	private Integer id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_medico", nullable = false)
 	private Medico medico;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_paciente", nullable = false)
 	private Paciente paciente;
 
