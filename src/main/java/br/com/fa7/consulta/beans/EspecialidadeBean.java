@@ -1,8 +1,10 @@
 package br.com.fa7.consulta.beans;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -18,9 +20,10 @@ public class EspecialidadeBean {
 	@Inject
 	private EspecialidadeDao dao;
 	
-	public void salvar() {
+	public void salvar() throws IOException {
 		dao.salvar(especialidade);
 		System.out.println("INSERIDO: " + especialidade.getNomeEspecialidade());
+		FacesContext.getCurrentInstance().getExternalContext().redirect("especialidades.xhtml");
 	}
 
 	public void removerEspecialidade(String id) {

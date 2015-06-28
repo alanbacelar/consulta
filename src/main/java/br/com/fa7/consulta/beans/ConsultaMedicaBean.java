@@ -1,8 +1,10 @@
 package br.com.fa7.consulta.beans;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -18,9 +20,10 @@ public class ConsultaMedicaBean {
 	@Inject
 	private ConsultaMedicaDao dao;
 
-	public void salvar() {
+	public void salvar() throws IOException {
 		dao.salvar(consulta);
 		System.out.println("INSERIDO: " + consulta.getPaciente().getNome());
+		FacesContext.getCurrentInstance().getExternalContext().redirect("consultas.xhtml");
 	}
 
 	public void remover(String id) {
