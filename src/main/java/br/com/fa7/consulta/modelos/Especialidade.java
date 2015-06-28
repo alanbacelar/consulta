@@ -32,9 +32,6 @@ public class Especialidade extends BaseModel implements Model {
 	@Basic(optional = false)
 	private String nome;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "especialidade", fetch=FetchType.LAZY)
-	private List<Medico> medicos;
-	
 	public Integer getId() {
 		return id;
 	}

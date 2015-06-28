@@ -12,13 +12,13 @@
 		</div>
     
          <h:dataTable value="#{especialidadeBean.especialidades}" var="especialidade" styleClass="table">
-		     <h:column>
-		     	<f:facet name="header">Id:</f:facet>
+         	<h:column>
+		     	<f:facet name="header">Código</f:facet>
 		        <h:outputText value="#{especialidade.id}"></h:outputText>
 		    </h:column>
 		    
-		    <h:column>
-		     	<f:facet name="header">Especialidade:</f:facet>
+		     <h:column>
+		     	<f:facet name="header">Nome</f:facet>
 		        <h:outputText value="#{especialidade.nome}"></h:outputText>
 		    </h:column>
 		</h:dataTable>
