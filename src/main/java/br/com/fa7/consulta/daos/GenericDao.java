@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.ejb.Startup;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,12 +18,16 @@ public abstract class GenericDao {
 	@PersistenceContext
 	private EntityManager em;
 	
-	public void salvar(Model modelo){
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void salvar(Model modelo){	
 		em.persist(modelo);
+		em.flush();
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void remover(Model modelo){
 		em.remove(modelo);
+		em.flush();
 	}
 	
 	public Model atualizar(Model modelo){

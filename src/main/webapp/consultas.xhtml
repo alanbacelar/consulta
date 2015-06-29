@@ -11,27 +11,27 @@
 		</div>
 
 		<h:dataTable value="#{consultaMedicaBean.consultas}" var="consulta"
-			styleClass="table">
+			styleClass="table table-bordered">
 			<h:column>
-				<f:facet name="header">Paciente:</f:facet>
+				<f:facet name="header">Paciente</f:facet>
 				<h:outputText
 					value="#{consulta.paciente.nome} #{consulta.paciente.sobrenome}"></h:outputText>
 			</h:column>
 
 			<h:column>
-				<f:facet name="header">Médico:</f:facet>
+				<f:facet name="header">Médico</f:facet>
 				<h:outputText
 					value="#{consulta.medico.nome} #{consulta.medico.sobrenome}"></h:outputText>
 			</h:column>
 
 			<h:column>
-				<f:facet name="header">Especialidade:</f:facet>
+				<f:facet name="header">Especialidade</f:facet>
 				<h:outputText
 					value="#{consulta.medico.especialidade.nome}"></h:outputText>
 			</h:column>
 
 			<h:column>
-				<f:facet name="header">Data da Consulta:</f:facet>
+				<f:facet name="header">Data da Consulta</f:facet>
 				<h:outputText value="#{consulta.dataConsulta}">
 					<f:convertDateTime pattern="dd/MM/yyyy" />
 				</h:outputText>

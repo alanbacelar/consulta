@@ -11,7 +11,7 @@
 		  <h1>Lista de Especialidades</h1>
 		</div>
     
-         <h:dataTable value="#{especialidadeBean.especialidades}" var="especialidade" styleClass="table">
+         <h:dataTable value="#{especialidadeBean.especialidades}" var="especialidade" styleClass="table table-bordered">
          	<h:column>
 		     	<f:facet name="header">Código</f:facet>
 		        <h:outputText value="#{especialidade.id}"></h:outputText>

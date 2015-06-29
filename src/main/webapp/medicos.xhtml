@@ -11,7 +11,7 @@
 		  <h1>Lista de Médicos</h1>
 		</div>
     
-         <h:dataTable value="#{medicoBean.medicos}" var="medico" styleClass="table">
+         <h:dataTable value="#{medicoBean.medicos}" var="medico" styleClass="table table-bordered">
 		     <h:column>
 		     	<f:facet name="header">Nome</f:facet>
 		        <h:outputText value="#{medico.nome}"></h:outputText>
