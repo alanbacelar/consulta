@@ -35,7 +35,7 @@ public class Medico extends BaseModel implements Model {
 	private String sobrenome;
 	
 	//@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE, orphanRemoval=true)
-	@ManyToOne(fetch=FetchType.EAGER, targetEntity = Especialidade.class, optional = false, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+	@ManyToOne(fetch=FetchType.EAGER, targetEntity = Especialidade.class)
 	@JoinColumn(name="id_especialidade", nullable = false)
 	private Especialidade especialidade;
 	
