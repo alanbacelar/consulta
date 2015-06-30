@@ -1,0 +1,51 @@
+<ui:composition template="/WEB-INF/templates/main.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<ui:define name="title">Lista de Pacientes</ui:define>
+
+	<ui:define name="content">
+		<div class="page-header">
+			<h1>Lista de Usuários Rest</h1>
+		</div>
+		<h:form>
+			<h:dataTable value="#{usuarioMB.listarUsuarios()}" var="usuario"
+				styleClass="table table-bordered">
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{usuario.nome}"></h:outputText>
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Login</f:facet>
+					<h:outputText value="#{usuario.login}"></h:outputText>
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">E-mail</f:facet>
+					<h:outputText value="#{usuario.email}"></h:outputText>
+				</h:column>
+
+				<h:column class="form-control">
+					<h:commandLink action="usuario-editar" value="Alterar">
+						<f:setPropertyActionListener target="#{usuarioMB.usuario}"
+							value="#{usuario}" />
+					</h:commandLink>
+				</h:column>
+				
+				<h:column class="form-control">
+					<h:commandLink action="#{usuarioMB.remover()}"
+						value="Excluir">
+						<f:setPropertyActionListener target="#{usuarioMB.usuario}"
+							value="#{usuario}" />
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+			<p>
+				<a class="btn btn-lg btn-primary" href="usuario-editar.xhtml" type="button">Novo</a> 
+			</p>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,47 @@
+<ui:composition template="/WEB-INF/templates/main.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+>
+   <ui:define name="title">Novo Usuário</ui:define>
+
+    <ui:define name="content">
+    	<div class="page-header">
+		  <h1>Usuário <small>Editar usuário</small></h1>
+		</div>
+		
+	   	<h:form>
+	   		<h:inputHidden value="#{usuarioMB.usuario.id}" />
+			<h:panelGrid>
+				<div class="form-group">
+					<h:outputText value="Nome:"/>
+					<h:inputText id="nomeInput" styleClass="form-control" value="#{usuarioMB.usuario.nome}" required="true" requiredMessage="Informe o nome do usuário" />
+					<h:message for="nomeInput" class="text-danger" />
+				</div>
+
+				<div class="form-group">
+					<h:outputText value="E-mail:"/>
+					<h:inputText id="nomeEmail" styleClass="form-control" value="#{usuarioMB.usuario.email}"  required="true" requiredMessage="Informe o email do usuário" />
+					<h:message for="nomeEmail" class="text-danger" />
+				</div>
+				
+				<div class="form-group">
+					<h:outputText value="Login:"/>
+					<h:inputText id="nomeLogin" styleClass="form-control" value="#{usuarioMB.usuario.login}"  required="true" requiredMessage="Informe o login do usuário" />
+					<h:message for="nomeLogin" class="text-danger" />
+				</div>
+				
+				<div class="form-group">
+					<h:outputText value="Senha:"/>
+					<h:inputSecret id="nomeSenha" styleClass="form-control" value="#{usuarioMB.usuario.senha}"  required="true" requiredMessage="Informe a senha do usuário" />
+					<h:message for="nomeSenha" class="text-danger" />
+				</div>
+				
+				<div class="form-group">
+					<h:commandButton styleClass="btn btn-primary"  action="#{usuarioMB.salvar}" value="Salvar"/>
+				</div>
+			</h:panelGrid>
+		</h:form>
+    </ui:define>
+   
+</ui:composition>
